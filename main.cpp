@@ -252,42 +252,72 @@ void s1_drawFence(float x, float y, float width) {
   }
 }
 void s1_drawCar(float x, float y) {
-  glPushMatrix();
-  glTranslatef(x, y, 0);
-  glColor3f(1, 0, 0);
-  glBegin(GL_QUADS);
-  glVertex2f(0, 0);
-  glVertex2f(0, 30);
-  glVertex2f(120, 30);
-  glVertex2f(120, 0);
-  glEnd();
-  glColor3f(0.8f, 0, 0);
-  glBegin(GL_QUADS);
-  glVertex2f(20, 30);
-  glVertex2f(35, 55);
-  glVertex2f(90, 55);
-  glVertex2f(105, 30);
-  glEnd();
-  glColor3f(0.7f, 0.9f, 1.0f);
-  glBegin(GL_QUADS);
-  glVertex2f(35, 35);
-  glVertex2f(35, 50);
-  glVertex2f(55, 50);
-  glVertex2f(55, 35);
-  glEnd();
-  glBegin(GL_QUADS);
-  glVertex2f(65, 35);
-  glVertex2f(65, 50);
-  glVertex2f(85, 50);
-  glVertex2f(85, 35);
-  glEnd();
-  glColor3f(0, 0, 0);
-  s1_drawCircle(25, 0, 14);
-  s1_drawCircle(95, 0, 14);
-  glColor3f(0.8f, 0.8f, 0.8f);
-  s1_drawCircle(25, 0, 7);
-  s1_drawCircle(95, 0, 7);
-  glPopMatrix();
+    glPushMatrix();
+    glTranslatef(x, y, 0);
+    if (s1_night) {
+        glBegin(GL_TRIANGLES);
+        glColor4f(1.0f, 1.0f, 0.6f, 0.18f);
+        glVertex2f(120, 22);
+        glVertex2f(340, -15);
+        glVertex2f(340, 45);
+        glEnd();
+        glBegin(GL_TRIANGLES);
+        glColor4f(1.0f, 1.0f, 0.8f, 0.35f);
+        glVertex2f(120, 22);
+        glVertex2f(280, 0);
+        glVertex2f(280, 35);
+        glEnd();
+        glColor3f(1.0f, 1.0f, 0.7f);
+        s1_drawCircle(120, 22, 5);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        s1_drawCircle(0, 20, 4);
+    }
+    else {
+        glColor3f(1.0f, 1.0f, 0.9f);
+        s1_drawCircle(120, 22, 4);
+        glColor3f(0.8f, 0.8f, 0.8f);
+        s1_drawCircle(118, 22, 2);
+        glColor3f(0.8f, 0.0f, 0.0f);
+        s1_drawCircle(0, 20, 3);
+    }
+
+    glColor3f(1, 0, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(0, 0);
+    glVertex2f(0, 30);
+    glVertex2f(120, 30);
+    glVertex2f(120, 0);
+    glEnd();
+    glColor3f(0.8f, 0, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(20, 30);
+    glVertex2f(35, 55);
+    glVertex2f(90, 55);
+    glVertex2f(105, 30);
+    glEnd();
+    if (s1_night)
+        glColor3f(0.2f, 0.3f, 0.4f);
+    else
+        glColor3f(0.7f, 0.9f, 1.0f);
+    glBegin(GL_QUADS);
+    glVertex2f(35, 35);
+    glVertex2f(35, 50);
+    glVertex2f(55, 50);
+    glVertex2f(55, 35);
+    glEnd();
+    glBegin(GL_QUADS);
+    glVertex2f(65, 35);
+    glVertex2f(65, 50);
+    glVertex2f(85, 50);
+    glVertex2f(85, 35);
+    glEnd();
+    glColor3f(0, 0, 0);
+    s1_drawCircle(25, 0, 14);
+    s1_drawCircle(95, 0, 14);
+    glColor3f(0.8f, 0.8f, 0.8f);
+    s1_drawCircle(25, 0, 7);
+    s1_drawCircle(95, 0, 7);
+    glPopMatrix();
 }
 void s1_drawBoat(float x, float y) {
   glPushMatrix();
